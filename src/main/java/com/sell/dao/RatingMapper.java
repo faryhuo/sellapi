@@ -13,5 +13,4 @@ public interface RatingMapper {
 
     int updateByPrimaryKeySelective(Rating record);
 
-    int updateByPrimaryKey(Rating record);
 }

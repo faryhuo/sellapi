@@ -44,6 +44,8 @@ public class SellerDetails {
 
     private List<Rating> ratings;
 
+    private List<String> infos;
+
     public SellerDetails() {
         super();
     }
@@ -191,5 +193,13 @@ public class SellerDetails {
 
     public void setGoods(List<GoodDetail> goods) {
         this.goods = goods;
+    }
+
+    public List<String> getInfos() {
+        return infos;
+    }
+
+    public void setInfos(List<String> infos) {
+        this.infos = infos;
     }
 }

@@ -21,11 +21,12 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectListBySellerId" resultType="com.sell.pojo.Goods">
-    select
-    <include refid="Base_Column_List" />
-    from GOODS
-    where sellerId = #{sellerId,jdbcType=INTEGER}
+      select
+      <include refid="Base_Column_List" />
+      from GOODS
+      where sellerId = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from GOODS
     where id = #{id,jdbcType=INTEGER}

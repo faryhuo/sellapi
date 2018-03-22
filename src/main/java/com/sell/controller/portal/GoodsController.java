@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api/goods")
 public class GoodsController {
+
     @Autowired
     private IGoodService iGoodService;
 

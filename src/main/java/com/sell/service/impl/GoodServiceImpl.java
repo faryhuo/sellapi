@@ -2,7 +2,6 @@ package com.sell.service.impl;
 
 import com.sell.common.ServiceResponse;
 import com.sell.dao.GoodsMapper;
-import com.sell.pojo.Foods;
 import com.sell.pojo.Goods;
 import com.sell.service.IFoodService;
 import com.sell.service.IGoodService;
