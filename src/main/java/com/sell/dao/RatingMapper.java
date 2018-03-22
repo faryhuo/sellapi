@@ -2,6 +2,8 @@ package com.sell.dao;
 
 import com.sell.pojo.Rating;
 
+import java.util.List;
+
 public interface RatingMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -12,5 +14,9 @@ public interface RatingMapper {
     Rating selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Rating record);
+
+    List<Rating> selectByFoodId(Integer foodId);
+
+    List<Rating> selectBySellerId(Integer sellerId);
 
 }

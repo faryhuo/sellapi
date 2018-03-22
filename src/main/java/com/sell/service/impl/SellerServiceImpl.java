@@ -3,8 +3,12 @@ package com.sell.service.impl;
 import com.sell.common.ServiceResponse;
 import com.sell.dao.SellerInfoMapper;
 import com.sell.dao.SellerMapper;
+import com.sell.dao.SellerPicsMapper;
+import com.sell.dao.SupportMapper;
 import com.sell.pojo.Seller;
 import com.sell.pojo.SellerInfo;
+import com.sell.pojo.SellerPics;
+import com.sell.pojo.Support;
 import com.sell.service.ISellerService;
 import com.sell.vo.SellerDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +26,26 @@ public class SellerServiceImpl implements ISellerService {
     @Autowired
     private SellerInfoMapper sellerInfoMapper;
 
+    @Autowired
+    private SupportMapper supportMapper;
+
+    @Autowired
+    private SellerPicsMapper sellerPicsMapper;
 
     public ServiceResponse getSellerById(Integer id){
         SellerDetails sellerDetails=new SellerDetails();
         Seller seller=sellerMapper.selectByPrimaryKey(id);
         List<SellerInfo> sellerInfoList=sellerInfoMapper.selectListBySellerId(id);
-        assembleSellerDetail(sellerDetails,seller,sellerInfoList);
+        List<SellerPics> sellerPics=sellerPicsMapper.selectListBySellerId(id);
+        List<Support> supportList=supportMapper.selectListBySellerId(id);
+        assembleSellerDetail(sellerDetails,seller,sellerInfoList,sellerPics,supportList);
         return  ServiceResponse.createBySuccess(sellerDetails);
     }
 
-    private void assembleSellerDetail(SellerDetails sellerDetails,Seller seller,List<SellerInfo> sellerInfoList){
+    private void assembleSellerDetail(
+            SellerDetails sellerDetails,
+            Seller seller,List<SellerInfo> sellerInfoList,
+            List<SellerPics> sellerPics, List<Support> supportList){
         sellerDetails.setAvatar(seller.getAvatar());
         sellerDetails.setBulletin(seller.getBulletin());
         sellerDetails.setDeliveryPrice(seller.getDeliveryPrice());
@@ -52,6 +66,16 @@ public class SellerServiceImpl implements ISellerService {
                 infos.add(sellerInfoList.get(i).getInfo());
             }
             sellerDetails.setInfos(infos);
+        }
+        if(sellerPics!=null){
+            List<String> pics=new LinkedList<String>();
+            for (int i = 0;i<sellerPics.size();i++){
+                pics.add(sellerPics.get(i).getImage());
+            }
+            sellerDetails.setPics(pics);
+        }
+        if(supportList!=null){
+            sellerDetails.setSupports(supportList);
         }
     }
 }

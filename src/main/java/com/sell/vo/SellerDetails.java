@@ -1,6 +1,7 @@
 package com.sell.vo;
 
 import com.sell.pojo.Rating;
+import com.sell.pojo.Support;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -45,6 +46,10 @@ public class SellerDetails {
     private List<Rating> ratings;
 
     private List<String> infos;
+
+    private List<String> pics;
+
+    private List<Support> supports;
 
     public SellerDetails() {
         super();
@@ -201,5 +206,21 @@ public class SellerDetails {
 
     public void setInfos(List<String> infos) {
         this.infos = infos;
+    }
+
+    public List<String> getPics() {
+        return pics;
+    }
+
+    public void setPics(List<String> pics) {
+        this.pics = pics;
+    }
+
+    public List<Support> getSupports() {
+        return supports;
+    }
+
+    public void setSupports(List<Support> supports) {
+        this.supports = supports;
     }
 }

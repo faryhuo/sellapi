@@ -18,6 +18,13 @@
     from supports
     where type = #{type,jdbcType=INTEGER}
   </select>
+  <select id="selectListBySellerId" resultType="com.sell.pojo.Support">
+    select
+    supports.type,supports.description
+    from seller_support join supports
+    on supports.type=seller_support.supportType
+    where seller_support.sellerId = #{sellerId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from supports
     where type = #{type,jdbcType=INTEGER}

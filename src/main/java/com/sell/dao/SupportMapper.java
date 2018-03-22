@@ -2,6 +2,8 @@ package com.sell.dao;
 
 import com.sell.pojo.Support;
 
+import java.util.List;
+
 public interface SupportMapper {
     int deleteByPrimaryKey(Integer type);
 
@@ -9,9 +11,9 @@ public interface SupportMapper {
 
     int insertSelective(Support record);
 
-    Support selectByPrimaryKey(Integer type);
-
     int updateByPrimaryKeySelective(Support record);
 
     int updateByPrimaryKey(Support record);
+
+    List<Support> selectListBySellerId(Integer sellerId);
 }
