@@ -28,6 +28,10 @@
     from FOODS
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectListByGoodId" resultType="com.sell.pojo.Foods">
+     delete from FOODS
+    where goodsId = #{goodId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from FOODS
     where id = #{id,jdbcType=INTEGER}

@@ -2,6 +2,8 @@ package com.sell.dao;
 
 import com.sell.pojo.Foods;
 
+import java.util.List;
+
 public interface FoodsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface FoodsMapper {
     int updateByPrimaryKeySelective(Foods record);
 
     int updateByPrimaryKey(Foods record);
+
+    List<Foods> selectListByGoodId(Integer goodId);
 }

@@ -14,7 +14,7 @@ public class GoodDetail {
 
     private Date updateTime;
 
-    private List<FoodDetail> foodList;
+    private List<FoodDetail> foods;
 
     public GoodDetail() {
         super();
@@ -61,11 +61,11 @@ public class GoodDetail {
     }
 
 
-    public List<FoodDetail> getFoodList() {
-        return foodList;
+    public List<FoodDetail> getFoods() {
+        return foods;
     }
 
-    public void setFoodList(List<FoodDetail> foodList) {
-        this.foodList = foodList;
+    public void setFoods(List<FoodDetail> foods) {
+        this.foods = foods;
     }
 }
