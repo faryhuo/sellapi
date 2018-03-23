@@ -1,6 +1,7 @@
 package com.sell.dao;
 
 import com.sell.pojo.Foods;
+import com.sell.pojo.Rating;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface FoodsMapper {
     int updateByPrimaryKey(Foods record);
 
     List<Foods> selectListByGoodId(Integer goodId);
+
 }

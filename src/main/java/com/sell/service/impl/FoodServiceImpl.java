@@ -2,7 +2,9 @@ package com.sell.service.impl;
 
 import com.sell.common.ServiceResponse;
 import com.sell.dao.FoodsMapper;
+import com.sell.dao.RatingMapper;
 import com.sell.pojo.Foods;
+import com.sell.pojo.Rating;
 import com.sell.service.IFoodService;
 import com.sell.vo.FoodDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,19 @@ public class FoodServiceImpl implements IFoodService{
     @Autowired
     private FoodsMapper foodsMapper;
 
+    @Autowired
+    private RatingMapper ratingMapper;
+
     @Override
     public ServiceResponse getFoodListByGoodId(Integer goodId) {
         List<FoodDetail> foodDetails= new LinkedList<FoodDetail>();
         List<Foods> foodsList= foodsMapper.selectListByGoodId(goodId);
         assembleFoodDetail(foodDetails,foodsList);
-        return ServiceResponse.createBySuccess(foodsList);
+        for(int i=0;i<foodDetails.size();i++){
+            List<Rating> ratings=ratingMapper.selectByFoodId(foodDetails.get(i).getId());
+            foodDetails.get(i).setRatings(ratings);
+        }
+        return ServiceResponse.createBySuccess(foodDetails);
     }
 
     private void assembleFoodDetail(List<FoodDetail> foodDetails,List<Foods> foodsList){
@@ -39,6 +48,7 @@ public class FoodServiceImpl implements IFoodService{
             foodDetail.setPrice(food.getPrice());
             foodDetail.setRating(food.getRating());
             foodDetail.setSellCount(food.getSellCount());
+            foodDetails.add(foodDetail);
         }
     }
 }
