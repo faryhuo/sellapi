@@ -24,14 +24,14 @@
   </filter-mapping>
 
   <!--webfilter-->
-  <filter>
+<!--  <filter>
     <filter-name>Webfilter</filter-name>
     <filter-class>com.sell.filter.Webfilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>Webfilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <url-pattern>/api/*</url-pattern>
+  </filter-mapping>-->
 
 
   <listener>
@@ -64,6 +64,5 @@
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
-
 </web-app>
 

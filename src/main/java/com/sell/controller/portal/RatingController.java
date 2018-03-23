@@ -17,7 +17,7 @@ public class RatingController {
     private IRatingService iRatingService;
 
     @RequestMapping(value = "{id}",method = RequestMethod.GET)
-    public ServiceResponse getSellerId(@PathVariable("id") Integer id){
+    public ServiceResponse getSellerId(@PathVariable("id")  Integer id){
        return iRatingService.getRatingListBySellerId(id);
     }
 }
