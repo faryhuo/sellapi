@@ -2,6 +2,8 @@ package com.sell.dao;
 
 import com.sell.pojo.Seller;
 
+import java.util.List;
+
 public interface SellerMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface SellerMapper {
     int updateByPrimaryKeySelective(Seller record);
 
     int updateByPrimaryKey(Seller record);
+
+    List<Seller> selectList();
 }

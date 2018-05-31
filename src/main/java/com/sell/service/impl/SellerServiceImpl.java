@@ -1,5 +1,7 @@
 package com.sell.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sell.common.ServiceResponse;
 import com.sell.dao.SellerInfoMapper;
 import com.sell.dao.SellerMapper;
@@ -42,11 +44,20 @@ public class SellerServiceImpl implements ISellerService {
         return  ServiceResponse.createBySuccess(sellerDetails);
     }
 
+    @Override
+    public ServiceResponse getSellerList(int pageSize, int pageNum) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Seller> sellerList=sellerMapper.selectList();
+        PageInfo pageResult=new PageInfo(sellerList);
+        pageResult.setList(sellerList);
+        return  ServiceResponse.createBySuccess(pageResult);
+    }
+
     private void assembleSellerDetail(
             SellerDetails sellerDetails,
             Seller seller,List<SellerInfo> sellerInfoList,
             List<SellerPics> sellerPics, List<Support> supportList){
-        sellerDetails.setAvatar(seller.getAvatar());
+        sellerDetails.setIcon(seller.getIcon());
         sellerDetails.setBulletin(seller.getBulletin());
         sellerDetails.setDeliveryPrice(seller.getDeliveryPrice());
         sellerDetails.setDeliveryTime(seller.getDeliveryTime());

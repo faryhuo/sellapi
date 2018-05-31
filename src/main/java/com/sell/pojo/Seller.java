@@ -22,6 +22,8 @@ public class Seller {
 
     private Double minPrice;
 
+    private Double averagePrice;
+
     private Double deliveryPrice;
 
     private Integer ratingCount;
@@ -30,13 +32,13 @@ public class Seller {
 
     private String bulletin;
 
-    private String avatar;
+    private String icon;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Seller(Integer id, String name, String description, Double deliveryTime, BigDecimal score, BigDecimal serviceScore, BigDecimal foodScore, Double rankRate, Double minPrice, Double deliveryPrice, Integer ratingCount, Integer sellCount, String bulletin, String avatar, Date createTime, Date updateTime) {
+    public Seller(Integer id, String name, String description, Double deliveryTime, BigDecimal score, BigDecimal serviceScore, BigDecimal foodScore, Double rankRate, Double minPrice, Double deliveryPrice, Integer ratingCount, Integer sellCount, String bulletin, String icon, Date createTime, Date updateTime) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,7 +52,7 @@ public class Seller {
         this.ratingCount = ratingCount;
         this.sellCount = sellCount;
         this.bulletin = bulletin;
-        this.avatar = avatar;
+        this.icon = icon;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -163,12 +165,12 @@ public class Seller {
         this.bulletin = bulletin == null ? null : bulletin.trim();
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
+    public void setIcon(String icon) {
+        this.icon = icon == null ? null : icon.trim();
     }
 
     public Date getCreateTime() {
@@ -185,5 +187,13 @@ public class Seller {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Double getAveragePrice() {
+        return averagePrice;
+    }
+
+    public void setAveragePrice(Double averagePrice) {
+        this.averagePrice = averagePrice;
     }
 }

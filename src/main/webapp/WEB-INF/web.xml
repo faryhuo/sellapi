@@ -24,14 +24,14 @@
   </filter-mapping>
 
   <!--webfilter-->
-<!--  <filter>
-    <filter-name>Webfilter</filter-name>
+ <filter>
+    <filter-name>WebFilter</filter-name>
     <filter-class>com.sell.filter.Webfilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>Webfilter</filter-name>
+    <filter-name>WebFilter</filter-name>
     <url-pattern>/api/*</url-pattern>
-  </filter-mapping>-->
+  </filter-mapping>
 
 
   <listener>

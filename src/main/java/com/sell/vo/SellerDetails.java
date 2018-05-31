@@ -34,7 +34,7 @@ public class SellerDetails {
 
     private String bulletin;
 
-    private String avatar;
+    private String icon;
 
     private Date createTime;
 
@@ -159,12 +159,12 @@ public class SellerDetails {
         this.bulletin = bulletin == null ? null : bulletin.trim();
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
+    public void setIcon(String icon) {
+        this.icon = icon == null ? null : icon.trim();
     }
 
     public Date getCreateTime() {

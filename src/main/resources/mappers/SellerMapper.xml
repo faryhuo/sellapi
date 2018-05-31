@@ -13,25 +13,31 @@
       <arg column="rankRate" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="minPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="deliveryPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="averagePrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="ratingCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="sellCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="bulletin" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="icon" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, description, deliveryTime, score, serviceScore, foodScore, rankRate, minPrice, 
-    deliveryPrice, ratingCount, sellCount, bulletin, avatar, createTime, updateTime
+    deliveryPrice,averagePrice, ratingCount, sellCount, bulletin, icon, createTime, updateTime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultType="com.sell.pojo.Seller" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from SELLER
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectList" resultType="com.sell.pojo.Seller">
+      select
+      <include refid="Base_Column_List" />
+      from SELLER
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from SELLER
     where id = #{id,jdbcType=INTEGER}
   </delete>
@@ -40,13 +46,13 @@
       deliveryTime, score, serviceScore, 
       foodScore, rankRate, minPrice, 
       deliveryPrice, ratingCount, sellCount, 
-      bulletin, avatar, createTime, 
+      bulletin, icon, createTime, 
       updateTime)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{deliveryTime,jdbcType=DOUBLE}, #{score,jdbcType=DECIMAL}, #{serviceScore,jdbcType=DECIMAL}, 
       #{foodScore,jdbcType=DECIMAL}, #{rankRate,jdbcType=DOUBLE}, #{minPrice,jdbcType=DOUBLE}, 
       #{deliveryPrice,jdbcType=DOUBLE}, #{ratingCount,jdbcType=INTEGER}, #{sellCount,jdbcType=INTEGER}, 
-      #{bulletin,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{bulletin,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sell.pojo.Seller" >
@@ -91,8 +97,8 @@
       <if test="bulletin != null" >
         bulletin,
       </if>
-      <if test="avatar != null" >
-        avatar,
+      <if test="icon != null" >
+        icon,
       </if>
       <if test="createTime != null" >
         createTime,
@@ -141,8 +147,8 @@
       <if test="bulletin != null" >
         #{bulletin,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null" >
-        #{avatar,jdbcType=VARCHAR},
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -191,8 +197,8 @@
       <if test="bulletin != null" >
         bulletin = #{bulletin,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null" >
-        avatar = #{avatar,jdbcType=VARCHAR},
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -217,7 +223,7 @@
       ratingCount = #{ratingCount,jdbcType=INTEGER},
       sellCount = #{sellCount,jdbcType=INTEGER},
       bulletin = #{bulletin,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       updateTime = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
