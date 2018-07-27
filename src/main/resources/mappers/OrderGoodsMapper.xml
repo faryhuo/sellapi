@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sell.dao.OrderGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.sell.pojo.OrderGoods" >
+    <constructor >
+      <arg column="orderId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goodName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goodCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="price" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updateDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.sell.pojo.OrderGoods" >
+    insert into order_goods (orderId, goodName, goodCount, 
+      price, createDate, updateDate
+      )
+    values (#{orderId,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, #{goodCount,jdbcType=INTEGER}, 
+      #{price,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sell.pojo.OrderGoods" >
+    insert into order_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        orderId,
+      </if>
+      <if test="goodName != null" >
+        goodName,
+      </if>
+      <if test="goodCount != null" >
+        goodCount,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="updateDate != null" >
+        updateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodCount != null" >
+        #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByOrderId" resultType="com.sell.pojo.OrderGoods">
+    select
+      orderId, goodName, goodCount,
+      price, createDate, updateDate
+    from order_goods
+    where orderId=#{orderId}
+  </select>
+</mapper>

@@ -3,8 +3,6 @@ package com.sell.controller.portal;
 import com.sell.common.ServiceResponse;
 import com.sell.service.IGoodService;
 import com.sell.vo.GoodDetail;
-import com.sun.deploy.net.HttpRequest;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
