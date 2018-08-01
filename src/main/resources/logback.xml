@@ -52,7 +52,7 @@
 
     <!-- geelynote mybatis log 日志 -->
 
-    <logger name="com.sell.dao" level="DEBUG"/>
+    <logger name="com.sell.dao" level="ERROR"/>
 
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" >-->
     <!--<appender-ref ref="console"/>-->
@@ -70,7 +70,7 @@
     <!--</logger>-->
 
 
-    <root level="DEBUG">
+    <root level="ERROR">
         <appender-ref ref="console"/>
         <appender-ref ref="error"/>
     </root>

@@ -19,4 +19,9 @@ public class UserServiceImpl implements IUserService{
         User user= userMapper.selectByPrimaryKey(userId);
         return ServiceResponse.createBySuccess(user);
     }
+
+    @Override
+    public ServiceResponse login(Integer UserId, String pwd) {
+        return null;
+    }
 }
