@@ -17,8 +17,8 @@ public  class JSONUtil {
              inputStream=new FileInputStream(file);
             byte[]buff=new byte[1000];
             int line=0;
-            while((line=inputStream.read(buff,0,1000))!=-1){
-                jsonData.append(new String(buff));
+            while((line=inputStream.read(buff))!=-1){
+                jsonData.append(new String(buff,0,line));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
