@@ -26,8 +26,11 @@ public class CompassController {
 
     @RequestMapping(value = "/getEnquiryData",method = RequestMethod.GET)
     public ServiceResponse getEnquiryData(HttpSession session) {
-        String jsonData= JSONUtil.getJSONByFileName("EnquiryData.json");
-        JSONArray json=JSONArray.parseArray(jsonData);
-        return ServiceResponse.createBySuccess(json);
+        String jsonData= JSONUtil.getJSONByFileName("SAEnquiryData.json");
+        System.out.println(jsonData);
+        JSONObject json=JSONObject.parseObject(jsonData);
+
+        JSONArray jsonArr=json.getJSONArray("data");
+        return ServiceResponse.createBySuccess(jsonArr);
     }
 }
