@@ -1,6 +1,7 @@
 package com.sell.controller.portal;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sell.common.ServiceResponse;
 import com.sell.util.JSONUtil;
@@ -20,6 +21,13 @@ public class CompassController {
     public ServiceResponse getSAData(HttpSession session) {
         String jsonData= JSONUtil.getJSONByFileName("SAData.json");
         JSONObject json=JSONObject.parseObject(jsonData);
+        return ServiceResponse.createBySuccess(json);
+    }
+
+    @RequestMapping(value = "/getEnquiryData",method = RequestMethod.GET)
+    public ServiceResponse getEnquiryData(HttpSession session) {
+        String jsonData= JSONUtil.getJSONByFileName("EnquiryData.json");
+        JSONArray json=JSONArray.parseArray(jsonData);
         return ServiceResponse.createBySuccess(json);
     }
 }
