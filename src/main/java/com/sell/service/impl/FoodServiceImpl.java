@@ -25,7 +25,11 @@ public class FoodServiceImpl implements IFoodService{
     @Override
     public ServiceResponse getFoodListByGoodId(Integer goodId) {
         List<FoodDetail> foodDetails= new LinkedList<FoodDetail>();
+        long startTime=System.currentTimeMillis();   //获取开始时间
         List<Foods> foodsList= foodsMapper.selectListByGoodId(goodId);
+        long endTime=System.currentTimeMillis();   //获取开始时间
+        System.out.println(endTime-startTime);
+
         assembleFoodDetail(foodDetails,foodsList);
         for(int i=0;i<foodDetails.size();i++){
             List<Rating> ratings=ratingMapper.selectByFoodId(foodDetails.get(i).getId());

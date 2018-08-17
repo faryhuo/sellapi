@@ -2,6 +2,7 @@ package com.sell.dao;
 
 import com.sell.pojo.Foods;
 import com.sell.pojo.Rating;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,6 +19,6 @@ public interface FoodsMapper {
 
     int updateByPrimaryKey(Foods record);
 
-    List<Foods> selectListByGoodId(Integer goodId);
+    List<Foods> selectListByGoodId(@Param("goodId") Integer goodId);
 
 }

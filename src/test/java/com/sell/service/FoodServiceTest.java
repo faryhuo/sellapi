@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,6 +16,12 @@ import java.util.List;
 public class FoodServiceTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private IFoodService iFoodService;
+
+    @BeforeClass
+    public void init(){
+        iFoodService.getFoodListByGoodId(-2);
+    }
+
 
     @Test(dataProvider ="providerData",timeOut = 3000)
     public void getFoodListByGoodId(int goodId,int expected) {
@@ -24,7 +32,6 @@ public class FoodServiceTest extends AbstractTestNGSpringContextTests {
 
     @DataProvider(name = "providerData")
     public Object[][] provideData() {
-
         return new Object[][] { { 1,1  },{2,0} };
     }
 
