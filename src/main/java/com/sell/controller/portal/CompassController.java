@@ -33,4 +33,11 @@ public class CompassController {
         JSONArray jsonArr=json.getJSONArray("data");
         return ServiceResponse.createBySuccess(jsonArr);
     }
+
+    @RequestMapping(value = "/getClientList",method = RequestMethod.GET)
+    public ServiceResponse getClientList(HttpSession session) {
+        String jsonData= JSONUtil.getJSONByFileName("ClientData.json");
+        JSONArray jsonArr=JSONArray.parseArray(jsonData);
+        return ServiceResponse.createBySuccess(jsonArr);
+    }
 }
